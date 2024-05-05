@@ -1,5 +1,5 @@
 export default async function fetchHistory() {
-  const res = await fetch("http://127.0.0.1:8080/history", {
+  const res = await fetch("https://namkit-8c9bfd4e30aa.herokuapp.com/history", {
     next: { revalidate: 20 },
   });
   if (!res.ok) {

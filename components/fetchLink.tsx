@@ -14,7 +14,7 @@ export default async function fetchData({ queryKey }: QueryFunctionContext) {
     type: type,
   };
 
-  const res = await fetch(`http://127.0.0.1:8080/get_me_link`, {
+  const res = await fetch(`https://namkit-8c9bfd4e30aa.herokuapp.com/get_me_link`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
