@@ -11,8 +11,8 @@ export default function ToasterProvider() {
           marginTop: "0.5rem",
           padding: "0.5rem 1.5rem",
           fontSize: "1.25rem",
-          color: "black",
-          background: "#CDD5C6",
+          color: "white",
+          background: "rgb(24 24 27 / var(--tw-bg-opacity))",
           filter: "drop-shadow(0rem 0.1rem 0.5rem #ea5a47)",
         },
         iconTheme: {

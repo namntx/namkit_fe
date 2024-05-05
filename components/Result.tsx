@@ -20,8 +20,8 @@ type ResultDataProps = {
 export default function Result({ data }: ResultDataProps) {
   if (data.error || !data.title) {
     return (
-      <div className="flex justify-center items-center">
-        <h1 className="truncate my-4 text-xl sm:text-3xl">
+      <div className="flex justify-center items-center bg-zinc-900 text-white">
+        <h1 className="truncate my-4 text-xl sm:text-3xl ">
           Something woOong. Try again?
         </h1>
         <Image
@@ -34,19 +34,19 @@ export default function Result({ data }: ResultDataProps) {
       </div>
     );
   }
-  const videoDate = moment(data.upload_date).format("MMMM Do YYYY");
+  const videoDate = moment(data.upload_date).format("DD-MM-YYYY");
   return (
     <>
-      <div className="py-4 px-6">
-        <div className="flex justify-between text-2xl">
+      <div className="py-4 px-6 bg-zinc-900 text-white">
+        <div className="flex justify-between text-md">
           {!data.fulltitle ? (
-            <p className="truncate max-w-2xl">{data.title}</p>
+            <p className="truncate max-w-md">{data.title}</p>
           ) : (
-            <p className="truncate max-w-2xl">{data.fulltitle}</p>
+            <p className="truncate max-w-md">{data.fulltitle}</p>
           )}
           <p className="truncate max-w-fit invisible xl:visible">{videoDate}</p>
         </div>
-        <div className="flex mt-4 gap-2 flex-wrap">
+        <div className="flex mt-4 gap-2 lg:flex-nowrap flex-wrap">
           <div className="flex flex-col items-center sm:items-left">
             <Image
               className="object-cover aspect-video md:max-w-xs xl:max-w-md rounded-3xl border border-black"
@@ -64,8 +64,8 @@ export default function Result({ data }: ResultDataProps) {
               href={data.thumbnail}
               target="_blank"
             >
-              <p className="text-sm sm:text-md md:text-lg">
-                I wanna just Thumbnail...
+              <p className="text-base sm:text-base md:text-base">
+                Tải ảnh thumbnail...
               </p>
               <Image
                 src="/images/search/download.svg"
@@ -78,18 +78,18 @@ export default function Result({ data }: ResultDataProps) {
           <div className="flex flex-col justify-center mb-10 gap-6 w-full md:w-1/2">
             {data.duration > 5000 ? (
               <div>
-                <p className="text-xl lg:text-2xl text-center">
-                  Sorry, video longer than 1h:30min
+                <p className="text-xl lg:text-base text-center">
+                  Tải video ngắn thôi, dưới 1h30p nhé!
                 </p>
               </div>
             ) : (
               <>
                 <div className="flex items-center justify-between gap-2 mx-auto">
-                  <p className="text-xl lg:text-3xl hidden sm:block">Audio</p>
+                  <p className="text-xl lg:text-base sm:block">Audio</p>
                   <Download url={data.original_url} type="audio" format="MP3" />
                 </div>
                 <div className="flex items-center justify-between gap-2 mx-auto">
-                  <p className="text-xl lg:text-3xl hidden sm:block">Video</p>
+                  <p className="text-xl lg:text-base sm:block">Video</p>
                   <Download url={data.original_url} type="video" format="MP4" />
                 </div>
               </>

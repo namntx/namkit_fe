@@ -1,32 +1,28 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Comic_Neue } from "next/font/google";
+import { Noto_Sans_Mono } from "next/font/google";
 import Image from "next/image";
 import ReactQueryProvider from "../providers/ReactQueryProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
 import {
   BsYoutube,
   BsTiktok,
+  BsFacebook,
   BsTwitter,
-  BsReddit,
-  BsTwitch,
   BsInstagram,
 } from "react-icons/bs";
-import Navbar from "@/components/Navbar";
 
-const customFont = Comic_Neue({ weight: "400", subsets: ["latin"] });
+const customFont = Noto_Sans_Mono({ weight: "400", subsets: ["vietnamese"] });
 
 export const metadata: Metadata = {
-  title: "Scrappy🐱 - audio, video, thumbnail downloader",
+  title: "Ủa alo ...",
   description:
-    "Do you need download youtube, twitch, tiktok, twitter, instagram, reddit, etc.. etc.. video, mp3, webm, mp4 formats, jpg thumbnail downloader...",
+    "Có gì cần tải à?",
   keywords: [
     "tiktok",
     "youtube",
     "twitter",
     "instagram",
-    "twitch",
-    "reddit",
     "download",
   ],
 };
@@ -43,8 +39,8 @@ export default function RootLayout({
       >
         <ToasterProvider />
         <ReactQueryProvider>
-          <Navbar />
-          <main className="w-full px-2 lg:w-4/5 2xl:w-4/5 max-w-5xl mb-8">
+          {/* <Navbar /> */}
+          <main className="w-full px-2 lg:w-3/5 2xl:w-3/5 max-w-3xl mb-8">
             <section className="relative select-none mt-6 md:mt-10 h-full w-full flex flex-col items-center justify-center sm:gap-x-3 ">
               <div className="relative flex items-center">
                 <Image
@@ -54,20 +50,21 @@ export default function RootLayout({
                   className="object-contain -rotate-12 h-[8rem] sm:h-full "
                   alt="ytb logo"
                 />
-                <h1 className="text-6xl sm:text-8xl">Scrappy</h1>
+                <h1 className="text-6xl sm:text-8xl text-white">NamKit</h1>
               </div>
-              <h3 className="text-xl">Multi-site video/audio downloader</h3>
+              <h3 className="text-xl text-white">Tải mọi thứ trên đời</h3>
               <div className="mt-3 text-3xl flex gap-x-4">
-                <BsYoutube className="text-logo drop-shadow-sm" />
-                <p className="drop-shadow-[1px_1px_0px_rgba(255,0,0,0.75)]">
-                  <BsTiktok className="drop-shadow-[-1px_-1.5px_0px_rgba(0,250,255,0.5)]" />
-                </p>
-                <BsTwitter className="text-sky-600/70 drop-shadow-sm" />
-                <BsTwitch className="text-purple-700 drop-shadow-sm" />
+                <div className="bg-zinc-900	border-gray-200 p-2 rounded-md shadown-md flex gap-x-4">
+                  <BsYoutube className="text-logo drop-shadow-sm" />
+                  <p className="drop-shadow-[1px_1px_0px_rgba(255,0,0,0.75)]">
+                    <BsTiktok className="drop-shadow-[-1px_-1.5px_0px_rgba(0,250,255,0.5)]" />
+                  </p>
+                  <BsFacebook className="text-blue-900/100 drop-shadow-sm" />
+                  <BsTwitter className="text-sky-600/70 drop-shadow-sm" />
+                  <BsInstagram className="p-1 rounded-lg bg-gradient-to-tr from-orange-500 to-purple-600 text-white drop-shadow-sm" />
 
-                <BsInstagram className="p-1 rounded-lg bg-gradient-to-tr from-orange-500 to-purple-600 text-white drop-shadow-sm" />
-
-                <BsReddit className="text-logo drop-shadow-sm" />
+                </div>
+                
               </div>
             </section>
             {children}

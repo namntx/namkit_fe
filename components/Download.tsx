@@ -33,6 +33,7 @@ export default function Download({ url, type, format }: DownloadProps) {
         </button>
       ) : link.isFetched ? (
         <>
+          {toast.success("Xong rồi! Nhấn nút download nhé 🐱", { duration: 2000 })}
           <a
             className="flex gap-x-2 items-center justify-center 
     bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] 
@@ -55,11 +56,11 @@ export default function Download({ url, type, format }: DownloadProps) {
         <button
           onClick={() => {
             link.refetch();
-            toast.success("Preparing it for uWu.. 🐱", { duration: 2000 });
+            toast.success("Đợi chút đang xử lí nha ... 🐱", { duration: 2000 });
           }}
           className="flex items-center justify-center 
       bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] 
-      rounded-full text-sm md:text-xl font-semibold 
+      rounded-full text-base md:text-base font-semibold 
       border border-black/40 transition 
       hover:bg-logo hover:border-black hover:border-2"
         >

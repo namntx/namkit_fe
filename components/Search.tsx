@@ -17,6 +17,7 @@ export default function Search() {
     "twitch",
     "twitter",
     "reddit",
+    "facebook"
   ];
 
   function checkSupported(userInput: String) {
@@ -24,8 +25,8 @@ export default function Search() {
   }
 
   return (
-    <div className="mt-6 md:mt-8 rounded-3xl border border-black">
-      <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto">
+    <div className="mt-6 md:mt-8">
+      <div className="flex flex-col w-min-16 w-full h-auto">
         <form
           className="flex relative"
           onSubmit={(e: FormEvent<HTMLFormElement>) => {
@@ -45,33 +46,21 @@ export default function Search() {
             }
           }}
         >
-          <input
-            type="text"
-            name="url"
-            className="group text-l md:text-xl px-6 focus:underline rounded-3xl 
-            h-[3rem] w-full bg-input placeholder:text-green-900/30 outline outline-1 outline-black placeholder:no-underline"
-          />
-          <button
-            className="absolute flex justify-center items-center h-full right-0 text-xl md:text-3xl 
-            pl-4 pr-2 rounded-full bg-button hover:bg-logo
-            hover:outline-2
-            outline outline-1 outline-black
-            transition  text-white"
-          >
-            Search
-            <Image
-              className="object-fit"
-              src="images/search/search-left.svg"
-              width={42}
-              height={42}
-              alt="search icon"
-            />
-          </button>
+          <label  className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+          <div className="relative w-full">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                  </svg>
+              </div>
+              <input type="search" id="search" name="url" className="block w-full p-4 ps-10 text-sm text-white border-b border-gray-300 bg-black focus:outline-none focus:border-b" placeholder="Nhập link vô đây" required />
+              <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-zinc-900	border-gray-200 focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Get ngay</button>
+          </div>
         </form>
         {result.isFetching ? (
-          <div className="flex justify-center items-center">
-            <h1 className="truncate my-4 text-xl sm:text-3xl">
-              LoAd1nG.. SeRvEr go Brrr..
+          <div className="flex justify-center items-center bg-zinc-900 text-white">
+            <h1 className="truncate my-4 text-md sm:text-md">
+              Đợi chút ...
             </h1>
             <Image
               src="/images/search/brr.svg"
