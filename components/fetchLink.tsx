@@ -14,17 +14,42 @@ export default async function fetchData({ queryKey }: QueryFunctionContext) {
     type: type,
   };
 
-  const res = await fetch(`https://namkit-8c9bfd4e30aa.herokuapp.com/get_me_link`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(obj),
-  });
+  if (url.includes("tiktok")) {
+    var raw = JSON.stringify({
+      "url": url,
+      "vQuality": "max",
+    });
 
-  if (!res.ok) {
-    throw new Error("Link preparation not ok");
+
+    const resTik = await fetch("https://co.wuk.sh/api/json", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': "application/json"
+      },
+      body: raw,
+      redirect: 'follow'
+    })
+
+    if (!resTik.ok) {
+      throw new Error("Link preparation not ok");
+    }
+
+    return await resTik.json();
+
+  } else {
+    const res = await fetch(`https://namkit-8c9bfd4e30aa.herokuapp.com/get_me_link`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+
+    if (!res.ok) {
+      throw new Error("Link preparation not ok");
+    }
+
+    return await res.json();
   }
-
-  return await res.json();
 }
